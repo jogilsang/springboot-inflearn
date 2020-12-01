@@ -10,4 +10,12 @@ JDK 1.8
 2. gladlew bootrun   
 3. http://localhost:8080/hello 접속   
 
-
+### build
+```
+build
+cmd창 키기
+cd C:\spring\springboot-inflearn\
+gladlew build
+cd build\libs
+java -jar hello-spring-0.0.1-SNAPSHOT.jar
+```
