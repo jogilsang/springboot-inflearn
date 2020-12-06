@@ -2,6 +2,7 @@ package com.springboot;
 
 
 import com.springboot.repository.JdbcMemberRepository;
+import com.springboot.repository.JdbcTemplateMemberRepository;
 import com.springboot.repository.MemberRepository;
 import com.springboot.repository.MemoryMemberRepository;
 import com.springboot.service.MemberService;
@@ -33,7 +34,8 @@ public class SpringConfig {
         // 객체지향적 설계
         // 다형성 활용
         // 인터페이스를 두고, 구현체를 바꿀수있음
-       return new JdbcMemberRepository(dataSource);
+//       return new JdbcMemberRepository(dataSource);
+       return new JdbcTemplateMemberRepository(dataSource);
     }
 
 }
