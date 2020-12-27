@@ -27,10 +27,28 @@ public class MemberService {
     * */
     public Long join (Member member) {
 
+        Long start = System.currentTimeMillis();
+
         validateDuplicateMember(member); // 같은 이름이 있는 중복 회원x
 
         memberRepository.save(member);
         return member.getId();
+
+// AOP 없이 수동으로 사용하기
+//        try {
+//
+//            validateDuplicateMember(member); // 같은 이름이 있는 중복 회원x
+//
+//            memberRepository.save(member);
+//            return member.getId();
+//
+//        }finally {
+//            Long end = System.currentTimeMillis();
+//            Long timeMs = start - end;
+//            System.out.println("join method = "+ timeMs +"ms");
+//
+//        }
+
     }
 
     private void validateDuplicateMember(Member member) {
