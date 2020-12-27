@@ -16,10 +16,12 @@ public class JpaMemberRepository implements MemberRepository{
 
     @Override
     public Member save(Member member) {
+        // persist : 영구히 저장한다.
         em.persist(member);
         return member;
     }
 
+    // ID는 PK조회가능
     @Override
     public Optional<Member> findById(Long id) {
         Member member = em.find(Member.class, id);
@@ -28,6 +30,7 @@ public class JpaMemberRepository implements MemberRepository{
 
     @Override
     public Optional<Member> findByName(String name) {
+        // JPQL
         List<Member> result = em.createQuery("select m from Member m where m.name = :name", Member.class)
                 .setParameter("name", name)
                 .getResultList();
@@ -36,8 +39,9 @@ public class JpaMemberRepository implements MemberRepository{
 
     @Override
     public List<Member> findAll() {
-        List<Member> result = em.createQuery("select m from member m", Member.class).getResultList();
-        return result;
+        // 객체를 대상으로 쿼리를 날림
+        // Entity(객체) 자체를 쿼리함
+        return em.createQuery("select m from Member m", Member.class).getResultList();
     }
 
     @Override

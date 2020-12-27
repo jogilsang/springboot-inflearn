@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 // @Service
+// JPA는 항상 트랜잭션이 있어야함. 조인들어올때, 트랜잭션 안에서 실행되어야함
 @Transactional
 public class MemberService {
 
